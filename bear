@@ -1,0 +1,7 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Run Repeated Tasks
+ *
+ * @package Bear
+ */
