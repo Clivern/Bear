@@ -11,12 +11,43 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if ( ! class_exists( 'BearTemplateTags' ) ) :
+if ( ! class_exists( 'Bear_TemplateTags' ) ) :
 
     /**
      * The template tags class
      */
-    class BearTemplateTags {
+    class Bear_TemplateTags {
+
+        /**
+         * An instance of this class
+         *
+         * @var object
+         */
+        private static $instance;
+
+        /**
+         * Get and Set Instance of the class
+         *
+         * @since 1.0.0
+         * @return object an instance of this class
+         */
+        public static function instance()
+        {
+            if ( !isset(self::$instance) ) {
+                self::$instance = new self();
+            }
+            return self::$instance;
+        }
+
+        public function config()
+        {
+
+        }
+
+        public function exec()
+        {
+
+        }
 
     }
 

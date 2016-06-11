@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer Module
+ * Base Module
  *
  * @author   clivern
  * @since    1.0.0
@@ -11,12 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if ( ! class_exists( 'Bear_Customizer' ) ) :
+if ( ! class_exists( 'Bear_Base' ) ) :
 
     /**
-     * The customizer class
+     * The base class
      */
-    class Bear_Customizer {
+    class Bear_Base {
 
         /**
          * An instance of this class

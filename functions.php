@@ -7,6 +7,12 @@
  * @package Bear
  */
 
+
+require get_template_directory() . '/inc/loader.php';
+
+
+
+
 if ( ! function_exists( 'bear_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
