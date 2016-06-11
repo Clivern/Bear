@@ -19,6 +19,13 @@ if ( ! class_exists( 'Bear_TemplateTags' ) ) :
     class Bear_TemplateTags {
 
         /**
+         * An instance of bear
+         *
+         * @var object
+         */
+        private $bear;
+
+        /**
          * An instance of this class
          *
          * @var object
@@ -39,9 +46,9 @@ if ( ! class_exists( 'Bear_TemplateTags' ) ) :
             return self::$instance;
         }
 
-        public function config()
+        public function config($bear)
         {
-
+            $this->bear = $bear;
         }
 
         public function exec()
