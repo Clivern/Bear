@@ -12,6 +12,7 @@ require get_template_directory() . '/inc/modules/base.php';
 require get_template_directory() . '/inc/modules/customizer.php';
 require get_template_directory() . '/inc/modules/ecommerce.php';
 require get_template_directory() . '/inc/modules/extras.php';
+require get_template_directory() . '/inc/modules/model.php';
 require get_template_directory() . '/inc/modules/supports.php';
 require get_template_directory() . '/inc/modules/template_tags.php';
 
@@ -22,7 +23,8 @@ $bear = Bear_Container::instance();
 $bear->register('config_name', 'Bear');
 $bear->register('config_version', '1.0.0');
 $bear->register('config_author', 'Clivern');
-$bear->register('config_author_url', 'http://clivern.com');
+$bear->register('config_theme_url', 'http://github.com/clivern/bear');
+$bear->register('config_author_url', 'http://github.com/clivern');
 
 $bear->register('config_textdomain', 'bear');
 $bear->register('config_prefix', 'bear');
@@ -44,6 +46,10 @@ $bear->register('module_ecommerce', function($bear){
 
 $bear->register('module_extras', function($bear){
     return Bear_Extras::instance()->config($bear);
+}, array($bear));
+
+$bear->register('module_model', function($bear){
+    return Bear_Model::instance()->config($bear);
 }, array($bear));
 
 $bear->register('module_supports', function($bear){

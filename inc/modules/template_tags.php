@@ -46,11 +46,22 @@ if ( ! class_exists( 'Bear_TemplateTags' ) ) :
             return self::$instance;
         }
 
+        /**
+         * Configure class
+         *
+         * @since 1.0.0
+         * @param object $bear
+         */
         public function config($bear)
         {
             $this->bear = $bear;
         }
 
+        /**
+         * Execute class
+         *
+         * @since 1.0.0
+         */
         public function exec()
         {
             add_action( 'edit_category', array(&$this,
@@ -140,7 +151,7 @@ if ( ! class_exists( 'Bear_TemplateTags' ) ) :
          * @since 1.0.0
          * @return bool
          */
-        function categorized_blog()
+        public function categorized_blog()
         {
             if ( false === ( $all_the_cool_cats = get_transient( "{$this->bear->config_prefix}_categories" ) ) ) {
                 // Create an array of all the categories that are attached to posts.
@@ -171,7 +182,8 @@ if ( ! class_exists( 'Bear_TemplateTags' ) ) :
          *
          * @since 1.0.0
          */
-        public function category_transient_flusher() {
+        public function category_transient_flusher()
+        {
             if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
                 return;
             }
