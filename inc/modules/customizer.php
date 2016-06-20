@@ -46,6 +46,12 @@ if ( ! class_exists( 'Bear_Customizer' ) ) :
             return self::$instance;
         }
 
+        /**
+         * Configure class
+         *
+         * @since 1.0.0
+         * @param object $bear
+         */
         public function config($bear)
         {
             $this->bear = $bear;
