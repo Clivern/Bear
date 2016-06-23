@@ -28,8 +28,7 @@ $bear->register('config_author_url', 'http://github.com/clivern');
 
 $bear->register('config_textdomain', 'bear');
 $bear->register('config_prefix', 'bear');
-$this->bear->config_textdomain
-$this->bear->config_prefix
+
 
 
 $bear->register('module_base', function($bear){
