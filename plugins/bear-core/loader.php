@@ -17,7 +17,7 @@ if ( !defined('WPINC') ) {
 require dirname(__FILE__) . '/inc/container.php';
 require dirname(__FILE__) . '/inc/base.php';
 require dirname(__FILE__) . '/inc/model.php';
-require dirname(__FILE__) . '/inc/validator.php';
+require dirname(__FILE__) . '/libraries/validator.php';
 
 $bear_core = Bear_Core_Container::instance();
 
@@ -40,6 +40,6 @@ $bear_core->register('module_model', function($bear_core){
     return Bear_Core_Model::instance()->config($bear_core);
 }, array($bear_core));
 
-$bear_core->register('module_validator', function($bear_core){
+$bear_core->register('library_validator', function($bear_core){
     return Bear_Core_Validator::instance()->config($bear_core);
 }, array($bear_core));
