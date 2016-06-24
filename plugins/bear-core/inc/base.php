@@ -64,8 +64,95 @@ if ( ! class_exists( 'Bear_Core_Base' ) ) :
          */
         public function exec()
         {
+            register_activation_hook( BEAR_CORE_ROOT_FILE, array(
+                &$this,
+                'activation'
+            ));
+            register_deactivation_hook( BEAR_CORE_ROOT_FILE, array(
+                &$this,
+                'deactivation'
+            ));
 
+            add_action('plugins_loaded', array(
+                &$this,
+                'translations'
+            ));
+
+            add_action('admin_enqueue_scripts', array(
+                &$this,
+                'enqueue'
+            ));
+
+            add_action('admin_head', array(
+                &$this,
+                'headerPrint'
+            ));
         }
+
+        /**
+         * Plugin activation
+         *
+         * @since 1.0
+         * @access public
+         */
+        public function activation()
+        {
+            if ( version_compare(get_bloginfo('version'), '3.9', '<') ) {
+                wp_die(__('WordPress Blog Version Must Be Higher Than 3.9 So Please Update Your Blog', $this->bear_core->config_i18n_textdomain), $this->bear_core->config_name);
+            } else {
+                flush_rewrite_rules();
+            }
+        }
+
+        /**
+         * Plugin deactivation
+         *
+         * @since 1.0
+         * @access public
+         */
+        public function deactivation()
+        {
+            flush_rewrite_rules();
+        }
+
+        /**
+         * Plugin translation
+         *
+         * @since 1.0
+         * @access public
+         */
+        public function translations()
+        {
+            load_plugin_textdomain( $this->bear_core->config_i18n_textdomain, $this->bear_core->config_i18n_abs_rel_path, $this->bear_core->config_i18n_rel_path );
+        }
+
+        /**
+         * Enqueue JS and CSS files in backend
+         *
+         * @since 1.0
+         * @access public
+         */
+        public function enqueue($hook)
+        {
+            wp_enqueue_script('bear_core_backend_scripts', plugins_url('/bear-core/assets/js/backend_scripts.js'), array( 'jquery' ), '1.0', true);
+            wp_enqueue_style('bear_core_backend_styles', plugins_url('/bear-core/assets/css/backend_styles.css'), array(), '1.0');
+        }
+
+        /**
+         * Print code in backend header
+         *
+         * @since 1.0
+         * @access public
+         */
+        public function headerPrint()
+        {
+            ?>
+            <script type="text/javascript">
+                // #
+            </script>
+            <?php
+        }
+
     }
 
 endif;
