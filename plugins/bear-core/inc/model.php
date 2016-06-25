@@ -69,6 +69,8 @@ if ( ! class_exists( 'Bear_Core_Model' ) ) :
         public function config($bear_core)
         {
             $this->bear_core = $bear_core;
+
+            return $this;
         }
 
         /**
@@ -82,6 +84,20 @@ if ( ! class_exists( 'Bear_Core_Model' ) ) :
 
             $this->wpdb = $wpdb;
             $this->prefix = $this->wpdb->prefix;
+
+            return $this;
+        }
+
+        /**
+         * Get Table Prefix
+         *
+         * @since 1.0.0
+         * @access public
+         * @return string
+         */
+        public function getTablePrefix()
+        {
+            return $this->wpdb->prefix;
         }
 
         /**
@@ -143,6 +159,19 @@ if ( ! class_exists( 'Bear_Core_Model' ) ) :
         }
 
         /**
+         * Create Custom Table
+         *
+         * @since 1.0.0
+         * @access public
+         * @param string $sql_query
+         */
+        public function create($sql_query)
+        {
+            require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
+            dbDelta($sql_query);
+        }
+
+        /**
          * Used to run custom SQL query
          *
          * @since 1.0.0
@@ -177,7 +206,7 @@ if ( ! class_exists( 'Bear_Core_Model' ) ) :
             $orderby = (empty($orderby)) ? '' : ' ORDER BY ' . $orderby;
             $limit = (empty($limit)) ? '' : ' LIMIT ' . $limit;
 
-            return $this->wpdb->get_results("SELECT {$cols} FROM {$this->prefix}{$table}{$where}{$orderby}{$limit}", ARRAY_A);
+            return $this->wpdb->get_results("SELECT {$cols} FROM {$table}{$where}{$orderby}{$limit}", ARRAY_A);
         }
 
         /**

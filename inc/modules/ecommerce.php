@@ -55,6 +55,8 @@ if ( ! class_exists( 'Bear_Ecommerce' ) ) :
         public function config($bear)
         {
             $this->bear = $bear;
+
+            return $this;
         }
 
         /**
@@ -65,6 +67,7 @@ if ( ! class_exists( 'Bear_Ecommerce' ) ) :
         public function exec()
         {
 
+            return $this;
         }
 
     }

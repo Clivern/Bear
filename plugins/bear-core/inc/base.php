@@ -55,6 +55,8 @@ if ( ! class_exists( 'Bear_Core_Base' ) ) :
         public function config($bear_core)
         {
             $this->bear_core = $bear_core;
+
+            return $this;
         }
 
         /**
@@ -87,6 +89,8 @@ if ( ! class_exists( 'Bear_Core_Base' ) ) :
                 &$this,
                 'headerPrint'
             ));
+
+            return $this;
         }
 
         /**
@@ -99,8 +103,6 @@ if ( ! class_exists( 'Bear_Core_Base' ) ) :
         {
             if ( version_compare(get_bloginfo('version'), '3.9', '<') ) {
                 wp_die(__('WordPress Blog Version Must Be Higher Than 3.9 So Please Update Your Blog', $this->bear_core->config_i18n_textdomain), $this->bear_core->config_name);
-            } else {
-                flush_rewrite_rules();
             }
         }
 
@@ -112,7 +114,7 @@ if ( ! class_exists( 'Bear_Core_Base' ) ) :
          */
         public function deactivation()
         {
-            flush_rewrite_rules();
+            #~
         }
 
         /**

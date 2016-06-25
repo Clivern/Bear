@@ -55,6 +55,8 @@ if ( ! class_exists( 'Bear_Extras' ) ) :
         public function config($bear)
         {
             $this->bear = $bear;
+
+            return $this;
         }
 
         /**
@@ -67,6 +69,8 @@ if ( ! class_exists( 'Bear_Extras' ) ) :
             add_filter( 'body_class', array( &$this,
                 'body_classes'
             ));
+
+            return $this;
         }
 
         /**

@@ -55,6 +55,8 @@ if ( ! class_exists( 'Bear_Supports' ) ) :
         public function config($bear)
         {
             $this->bear = $bear;
+
+            return $this;
         }
 
         /**
@@ -67,6 +69,8 @@ if ( ! class_exists( 'Bear_Supports' ) ) :
             add_action( 'after_setup_theme', array( &$this,
                 'jetpack_support'
             ));
+
+            return $this;
         }
 
         /**

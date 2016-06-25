@@ -55,6 +55,8 @@ if ( ! class_exists( 'Bear_TemplateTags' ) ) :
         public function config($bear)
         {
             $this->bear = $bear;
+
+            return $this;
         }
 
         /**
@@ -70,6 +72,8 @@ if ( ! class_exists( 'Bear_TemplateTags' ) ) :
             add_action( 'save_post',     array(&$this,
                 'category_transient_flusher'
             ));
+
+            return $this;
         }
 
         /**

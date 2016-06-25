@@ -55,6 +55,8 @@ if ( ! class_exists( 'Bear_Customizer' ) ) :
         public function config($bear)
         {
             $this->bear = $bear;
+
+            return $this;
         }
 
         /**
@@ -70,6 +72,8 @@ if ( ! class_exists( 'Bear_Customizer' ) ) :
             add_action( 'customize_preview_init', array( &$this,
                 'customize_preview_js'
             ));
+
+            return $this;
         }
 
         /**

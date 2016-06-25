@@ -43,3 +43,8 @@ $bear_core->register('module_model', function($bear_core){
 $bear_core->register('library_validator', function($bear_core){
     return Bear_Core_Validator::instance()->config($bear_core);
 }, array($bear_core));
+
+
+# Execute
+$bear_core->module_base->exec();
+$bear_core->module_model->exec();

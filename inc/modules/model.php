@@ -69,6 +69,8 @@ if ( ! class_exists( 'Bear_Model' ) ) :
         public function config($bear)
         {
             $this->bear = $bear;
+
+            return $this;
         }
 
         /**
@@ -82,6 +84,8 @@ if ( ! class_exists( 'Bear_Model' ) ) :
 
             $this->wpdb = $wpdb;
             $this->prefix = $this->wpdb->prefix;
+
+            return $this;
         }
 
         /**
@@ -177,7 +181,7 @@ if ( ! class_exists( 'Bear_Model' ) ) :
             $orderby = (empty($orderby)) ? '' : ' ORDER BY ' . $orderby;
             $limit = (empty($limit)) ? '' : ' LIMIT ' . $limit;
 
-            return $this->wpdb->get_results("SELECT {$cols} FROM {$this->prefix}{$table}{$where}{$orderby}{$limit}", ARRAY_A);
+            return $this->wpdb->get_results("SELECT {$cols} FROM {$table}{$where}{$orderby}{$limit}", ARRAY_A);
         }
 
         /**

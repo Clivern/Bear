@@ -55,6 +55,8 @@ if ( ! class_exists( 'Bear_Base' ) ) :
         public function config($bear)
         {
             $this->bear = $bear;
+
+            return $this;
         }
 
         /**
@@ -79,6 +81,8 @@ if ( ! class_exists( 'Bear_Base' ) ) :
             add_action( 'after_setup_theme', array( &$this,
                 'custom_header_setup'
             ));
+
+            return $this;
         }
 
         /**
